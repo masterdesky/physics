@@ -1,0 +1,200 @@
+\section*{Feladat}
+Beadandó számolás az lenne, hogy írjuk fel a Fock-operátor(oka)t két esetben:
+
+\begin{itemize}
+	\item Mindkét részecske az 1-es állapotban van, szinglett spinállapotban (egyik +1/2, másik -1/2, a Slater-determináns tudja a dolgát)
+	\item Az egyik részecske az 1-es, a másik a 2-es állapotban van, ilyenkor legyen a spinje mindkettőnek +1/2 (a triplett m=1 vetületű állapota)!
+\end{itemize}
+A mesterszakos hallgatók a két részecske között a szokásos Coloumb-kölcsönhatást tételezzenek fel, az alapszakos hallgatók pedig pontszerű (Dirac-delta) kölcsönhatást!
+
+\section*{Megoldás}
+
+\subsection*{Elméleti háttér}
+A statisztikus fizikában megjelenő Fock-operátor, többek között egy rendszer Hamilton-operátorának közelítését szolgálja, az alábbi módon:
+
+\begin{equation} \label{eq:1}
+	\hat{H} \psi = E \psi
+	\quad\sim\quad
+	\hat{F} \psi = E \psi
+\end{equation}
+A Hartree--Fock-közelítés a sokrészecskés rendszerek esetén él azzal a feltételezéssel, hogy azok hullámfüggvénye felépíthető egyrészecskés hullámfüggvények összegéből. Egy ilyen rendszer, egyrészecskés hullámfüggvényekből felépített, közelítő Hamilton-operátort hívjuk Fock-operátornak. Variációs módszerből levezetve, az $i$-edik elektronhoz tartozó $\hat{F}$ Fock-operátort az alábbi módon definiálhatjuk:
+
+\begin{equation} \label{eq:2}
+	\hat{F} \left( i \right)
+	=
+	\hat{h} \left( i \right)
+	+
+	\sum_{j\,\neq\,i} \left( \hat{J}_{j} \left( i \right) - \hat{K}_{j} \left( i \right) \right)
+\end{equation}
+Mely definícióban a $\hat{h} \left( i \right)$ az $i$-edik elektronra vonatkozó egyrészecskés Hamilton-operátor, $\hat{J}_{j} \left( i \right)$ az $i$-edik és $j$-edik elektron között ható (Coulomb) kölcsönhatás operátora, $\hat{K}_{j} \left( i \right)$ pedig a kicserélődési operátor. \par
+A feladatban azt a két esetet vizsgáljuk, ahol az egyikben mindkét részecske a $\chi_{a}$ állapotot, míg másikban egyik a $\chi_{a}$, másik pedig a $\chi_{b}$ állapotban helyezkedik el. A feladatok megoldása során az $1$ és $2$ indexek segítségével fogom jelölni az egyes elektronokat, míg $a$ és $b$ indexekkel a különböző állapotokat. A Coulomb-operátor ebben a jelölésben definiálható az alábbi módon:
+
+\begin{equation} \label{eq:3}
+	\hat{J}_{b} \left( x_{1}, s_{1} \right)
+	=
+	\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s_{2} \right) \chi_{b} \left( x_{2}, s_{2} \right) \frac{1}{r_{12}}
+\end{equation}
+Mely az első ($x_{1}$) elektron által érzett, a második ($x_{2}$), $b$ állapotban tartózkodó elektron által keltett hatást jellemző mennyiség. A $\hat{K}_{i}$ kölcsönhatási operátor azonban csak egy hatásként írható fel, az alábbi módon:
+
+\begin{equation} \label{eq:4}
+	\hat{K}_{b} \left( x_{1}, s_{1} \right) \chi_{a} \left( x_{1}, s_{1} \right)
+	=
+	\left[
+		\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s_{2} \right) \chi_{a} \left( x_{2}, s_{2} \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{b} \left( x_{1}, s_{1} \right)
+\end{equation}
+Amely tulajdonképpen az $a$, valamint $b$ állapotok átfedéséből következő hatásokat fejezi ki, melyet az $a$ állapotban levő $x_{1}$ elektron érez.
+
+\subsection*{Első eset}
+Az első esetben a mindkét elektron egyaránt a $\chi_{a}$ állapotban tartózkodik, spinjeik pedig egymás ellentettjei. (Ez utóbbi most szimplán csak $s$ és $-s$ felhasználásával jelölöm.) Ekkor a Coulomb-operátor, valamint a kölcsönhatási operátor az alábbi módon írható:
+
+\begin{equation} \label{eq:5}
+	\boxed{
+	\hat{J}_{a} \left( x_{1}, s \right)
+	=
+	\int \D{x_{2}} \chi_{a}^{\ast} \left( x_{2}, -s \right) \chi_{a} \left( x_{2}, -s \right)
+	}
+\end{equation}
+\begin{equation} \label{eq:6}
+	\boxed{
+	\hat{K}_{a} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	=
+	\left[
+		\int \D{x_{2}} \chi_{a}^{\ast} \left( x_{2}, -s \right) \chi_{a} \left( x_{2}, -s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{a} \left( x_{1}, s \right)
+	}
+\end{equation}
+Melyeket analóg módon a $2$-es részecskére vonatkozó esetekre is felírhatunk:
+
+\begin{equation} \label{eq:7}
+	\boxed{
+	\hat{J}_{a} \left( x_{2}, -s \right)
+	=
+	\int \D{x_{1}} \chi_{a}^{\ast} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	}
+\end{equation}
+\begin{equation} \label{eq:8}
+	\boxed{
+	\hat{K}_{a} \left( x_{2}, -s \right) \chi_{a} \left( x_{2}, -s \right)
+	=
+	\left[
+		\int \D{x_{1}} \chi_{a}^{\ast} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{a} \left( x_{2}, -s \right)
+	}
+\end{equation}
+Figyelembe véve, hogy egy darab $a$ állapot van, a Fock-operátor(ok) az alábbi(ak) lesz(nek) ebben az esetben:
+
+\begin{equation} \label{eq:9}
+	\hat{F} \left( x_{1}, s \right)
+	=
+	\hat{h}	\left( x_{1}, s \right)
+	+
+	\hat{J}_{a} \left( x_{1}, s \right) - \hat{K}_{a} \left( x_{1}, s \right)
+\end{equation}
+\begin{equation} \label{eq:10}
+	\hat{F} \left( x_{2}, -s \right)
+	=
+	\hat{h}	\left( x_{2}, -s \right)
+	+
+	\hat{J}_{a} \left( x_{2}, -s \right) - \hat{K}_{a} \left( x_{2}, -s \right)
+\end{equation}
+Könnyen megfigyelhető, hogy a fenti egyenletekben
+
+\begin{equation*}
+	\hat{J}_{a} \chi_{a}
+	=
+	\hat{K}_{a} \chi_{a}
+\end{equation*}
+mindkét esetben. Tehát a \eqref{eq:9} és \eqref{eq:10} egyenletekben szereplő
+
+\begin{equation*}
+	\left[ \hat{J}_{a} - \hat{K}_{a} \right] \chi_{a}
+	=
+	0
+\end{equation*}
+Melyből így következik a Fock-operátorok végleges alakja az első esetre:
+\begin{empheq}[box={\mybluebox[5pt]}]{equation} \label{eq:11}
+	\hat{F} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	=
+	\hat{h} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+\end{empheq}
+\begin{empheq}[box={\mybluebox[5pt]}]{equation} \label{eq:12}
+	\hat{F} \left( x_{2}, -s \right) \chi_{a} \left( x_{2}, -s \right)
+	=
+	\hat{h} \left( x_{2}, -s \right) \chi_{a} \left( x_{2}, -s \right)
+\end{empheq}
+
+\subsection*{Második eset}
+A második esetben a két elektron különböző állapotban tartózkodik, azonban spinjeik megegyeznek, melyeket itt most újfent $s$-el fogok jelölni. Ekkor a fenti két operátor alakja a következő:
+
+\begin{equation} \label{eq:13}
+	\boxed{
+	\hat{J}_{b} \left( x_{1}, s \right)
+	=
+	\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s \right) \chi_{b} \left( x_{2}, s \right) \frac{1}{r_{12}}
+	}
+\end{equation}
+\begin{equation} \label{eq:14}
+	\hat{K}_{b} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	=
+	\left[
+		\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s \right) \chi_{a} \left( x_{2}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{b} \left( x_{1}, s \right)
+\end{equation}
+Az óra révén megismert \textit{TMP Chem} YouTube csatorna \textit{Computational Chemistry 4.17 - Fock Operator} videójának elmondása alapján ebben az esetben egy trükkhöz folyamodhatunk. Vezessük be a $\hat{\mathscr{P}}_{ab}$ felcserélő operátort, mely két részecske felcserélését hivatott szemléltetni, és mely hatása az egyenletekben az elektronok állapotait jelző indexek felcserélését okozza az operátortól jobbra. Ekkor a kicserélődési operátort leíró egyenlet átírható az alábbi formába:
+
+\begin{equation} \label{eq:15}
+	\boxed{
+	\hat{K}_{b} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	=
+	\left[
+		\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s \right) \hat{\mathscr{P}}_{ab} \chi_{b} \left( x_{2}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{a} \left( x_{1}, s \right)
+	}
+\end{equation}
+Ez a kifejezés a felcserélő operátor jelenlététől eltekintve ekvivalens a \eqref{eq:13}-as Coulomb-operátorral. A másik részecskére vonatkozó operátorok az alábbiak, szintén analóg módon:
+
+\begin{equation} \label{eq:16}
+	\boxed{
+	\hat{J}_{a} \left( x_{2}, s \right)
+	=
+	\int \D{x_{1}} \chi_{a}^{\ast} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right) \frac{1}{r_{12}}
+	}
+\end{equation}
+\begin{equation} \label{eq:17}
+	\boxed{
+	\hat{K}_{a} \left( x_{2}, s \right) \chi_{b} \left( x_{2}, s \right)
+	=
+	\left[
+		\int \D{x_{1}} \chi_{a}^{\ast} \left( x_{1}, s \right) \hat{\mathscr{P}}_{ab} \chi_{a} \left( x_{1}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{b} \left( x_{2}, s \right)
+	}
+\end{equation}
+Nem összetévesztendő, az első esetben, valamint az itt szereplő $\hat{J}_{a}$ és $\hat{K}_{a}$ operátorok eltérnek a két esetben! Ezek segítségével és az említett hasonlóságot felhasználva, a Fock-operátorok hatás alakjában felírhatóak végül az alábbi módon:
+
+\begin{empheq}[box={\mybluebox[5pt]}]{equation} \label{eq:18}
+	\hat{F} \left( x_{1}, s \right) \chi_{a} \left( x_{1}, s \right)
+	=
+	\left[
+	\hat{h}	\left( x_{1}, s \right)
+	+
+	\int \D{x_{2}} \chi_{b}^{\ast} \left( x_{2}, s \right) \left( 1 - \hat{\mathscr{P}}_{ab} \right) \chi_{b} \left( x_{2}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{a} \left( x_{1}, s \right)
+\end{empheq}
+\begin{empheq}[box={\mybluebox[5pt]}]{equation} \label{eq:19}
+	\hat{F} \left( x_{2}, s \right) \chi_{b} \left( x_{2}, s \right)
+	=
+	\left[
+	\hat{h}	\left( x_{2}, s \right)
+	+
+	\int \D{x_{1}} \chi_{a}^{\ast} \left( x_{1}, s \right) \left( 1 - \hat{\mathscr{P}}_{ab} \right) \chi_{a} \left( x_{1}, s \right) \frac{1}{r_{12}}
+	\right]
+	\chi_{b} \left( x_{2}, s \right)
+\end{empheq}
