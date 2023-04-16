@@ -1,6 +1,6 @@
 # Ignore outputs
 out/
-
+data/
 
 .ipynb_checkpoints/
 
